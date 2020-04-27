@@ -46,8 +46,6 @@ public class mainController {
 			String filetype = path.split("\\.")[path.split("\\.").length-1];
 			if (mainpane.validateAll()) {
 				try {
-					//ffmpeg -v quiet -y -i input.ts -vcodec copy -acodec copy -ss 00:00:00 -t 00:30:00 \
-					//  -sn test3.mkv -vcodec copy -acodec copy -ss 00:30:00 -t 01:00:00 -sn test4.mkv
 					Process process = Runtime.getRuntime().exec("ffmpeg -i \"" + path + "\" -vcodec copy -acodec copy -ss 00:00:00 -t " + mainpane.getTime()
 							+ " -sn \"" + path + ".part1.\"" + filetype + " -vcodec copy -acodec copy -ss " + mainpane.getTime() + " -sn " + path + ".part2." + filetype);
 					InputStream stdIn = process.getInputStream();
